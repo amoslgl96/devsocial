@@ -15,6 +15,9 @@ const keys = require("../../config/keys");
 
 const passport = require("passport");
 
+// Load input validation
+const validateRegisterInput = require("../../validation/register");
+
 // @route GET api/users/test
 // @desc Tests users route
 // @access Public
@@ -28,11 +31,18 @@ router.get("/test", (req, res) =>
 // @desc Register user
 // @access Public (they can't be logged in to register. Hence public.)
 router.post("/register", (req, res) => {
+  const { errors, isValid } = validateRegisterInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   User.findOne({
     email: req.body.email
   }).then(user => {
     if (user) {
-      return res.status(400).json({ email: "Email already exists" });
+      errors.email = "Email already exist";
+      return res.status(400).json(errors);
     } else {
       const avatar = gravatar.url(req.body.email, {
         s: "200", //Size
