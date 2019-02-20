@@ -9,6 +9,10 @@ const gravatar = require("gravatar");
 
 const bcrypt = require("bcryptjs");
 
+const jwt = require("jsonwebtoken");
+
+const keys = require("../../config/keys");
+
 // @route GET api/users/test
 // @desc Tests users route
 // @access Public
@@ -73,13 +77,25 @@ router.post("/login", (req, res) => {
     bcrypt.compare(password, user.password).then(isMatch => {
       if (!isMatch) {
         return res.status(400).json({
-          password: "password is invalid"
+          password: "password is incorrect"
         });
       }
 
-      return res.json({
-        msg: "success"
+      // create payload
+      const payload = {
+          id: user.id,
+          name: user.name,
+          avatar: user.avatar
+      };
+
+      jwt.sign(payload, keys.secretOrKey, { expiresIn: 3000}, (err,token)=>{
+          return res.json({
+              success: true,
+              token: 'Bearer ' + token 
+          });
       });
+
+    
     });
   });
 });
