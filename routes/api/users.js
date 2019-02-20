@@ -13,6 +13,8 @@ const jwt = require("jsonwebtoken");
 
 const keys = require("../../config/keys");
 
+const passport = require("passport");
+
 // @route GET api/users/test
 // @desc Tests users route
 // @access Public
@@ -64,6 +66,9 @@ router.post("/register", (req, res) => {
   });
 });
 
+// @route GET api/users/login
+// @desc Login and receive JWT
+// @access Public
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
 
@@ -83,21 +88,34 @@ router.post("/login", (req, res) => {
 
       // create payload
       const payload = {
-          id: user.id,
-          name: user.name,
-          avatar: user.avatar
+        id: user.id,
+        name: user.name,
+        avatar: user.avatar
       };
 
-      jwt.sign(payload, keys.secretOrKey, { expiresIn: 3000}, (err,token)=>{
-          return res.json({
-              success: true,
-              token: 'Bearer ' + token 
-          });
+      jwt.sign(payload, keys.secretOrKey, { expiresIn: 3000 }, (err, token) => {
+        return res.json({
+          success: true,
+          token: "Bearer " + token
+        });
       });
-
-    
     });
   });
 });
+
+// @route GET api/users/current
+// @desc Return current user
+// @access Private
+router.get(
+  "/current",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    return res.json({
+      id: req.user.id,
+      name: req.user.name,
+      email: req.user.email
+    });
+  }
+);
 
 module.exports = router;
