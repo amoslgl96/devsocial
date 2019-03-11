@@ -40,6 +40,7 @@ const ProfileSchema = new Schema({
     type: String
   },
 
+  //each experience will have its own id auto generated
   experience: [
     {
       title: {
@@ -73,7 +74,7 @@ const ProfileSchema = new Schema({
 
   education: [
     {
-      School: {
+      school: {
         type: String,
         required: true
       },
@@ -81,7 +82,7 @@ const ProfileSchema = new Schema({
         type: String,
         required: true
       },
-      lfieldofstudy: {
+      fieldofstudy: {
         type: String,
         required: true
       },
