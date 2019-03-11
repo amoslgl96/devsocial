@@ -4,6 +4,8 @@ const isEmpty = require("./is-empty");
 module.exports = data => {
   let errors = {};
 
+  //this is necessary so that if data.email/password is not inputted 
+  //at the front-end which results them in null/undefined, the if checks will not give error
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
 
