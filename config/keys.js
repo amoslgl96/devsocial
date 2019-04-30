@@ -8,4 +8,5 @@ module.exports={
 
 
 
-// user name amoslgl96@gmail.com , pass amoslgl96 
+// Baolgl96@gmail.com
+// Beads123@

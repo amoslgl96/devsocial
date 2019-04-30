@@ -1,0 +1,69 @@
+package.json -> proxy -> allows our react client to 
+invoke requests to our backend apis using 
+axios.get('api/profile) instead of axios.get(http://localhost:5000/api/profile)
+
+By right, it will be one terminal start react server 
+antoehr terminal start node server.
+
+But we can install concurrently (npm i concurrently) -> to start both 
+tgt in one terminal.
+
+
+
+also, include scripts: client-install -> 
+"npm install --prefix client" -> for people who clone 
+the project on git, they can call this and access client folder 
+to install the node modules referencing package.json.
+
+
+
+
+package.json -> proxy -> for easier invoking of api in the backend 
+
+axios.get('api/profile') instead of 'http://localhost:5000/api/profile'
+
+
+
+
+the <form noValidate> -> disables the html5 default error message popup
+
+
+
+
+
+
+
+
+Redux
+
+npm i redux react-redux redux-thunk 
+
+react-redux  -> glues everything together. helps to use redux more easily 
+
+redux-thunk -> middleware -> 
+when we make ajax request, we want to wait for that rquest 
+and then dispatch to our reducer. Thunk allows us to do that.
+
+
+
+
+import { Provider } from react-redux
+Provider -> is a component which provides our application with the store 
+which stores everything. It has to wrap evrything  -> to give everything the data
+see App.js 
+
+
+
+when u ahve multiple reducers, you use combineReducers to 
+combine them and provide to the createStore 
+
+you need a root reducer, then the root have multiple reducers (combined)
+root reducer is the index.js in reducers/ folder 
+
+
+
+
+
+
+
+in store.js -> Compose is used when you want to pass multiple store enhancers to the store. Store enhancers are higher order functions that add some extra functionality to the store. The only store enhancer which is supplied with Redux by default is applyMiddleware however many other are available.

@@ -1,0 +1,5 @@
+to do redirecting, we can use react-router which offers 
+props.history.push('/dashboard'). But to allow this to happen in
+the action creator functions, we need to use withRouter from 'react-router-dom'
+
+see how withRouter is used in the register COMPONENT .

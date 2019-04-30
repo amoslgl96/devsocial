@@ -1,0 +1,60 @@
+
+Arrow function handles this-binding. So, another alternative is to use it.
+Do not have to declare this.onChange = this.onChange.bind(this);
+
+
+onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+}
+And turn to
+
+
+onChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+ }
+
+
+
+
+
+in react, there is no innate support for dynamic class names.
+so we need to have classnames module for it to happen.
+This is with respect to the bootstrap form in-valid class use. 
+when there is error, we want that classname to be triggered.
+
+
+
+
+react-redux allows us to use {connect} -> which connects redux to a component 
+
+
+
+
+
+https://blog.bitsrc.io/understanding-react-proptypes-type-checking-in-react-9648a62ce12e
+-> learn proptypes -> ensure that props are of the correct data type 
+
+Good practice in ReactJs in general 
+
+
+
+
+
+
+
+https://github.com/reduxjs/redux-thunk
+Redux Thunk middleware allows you to write action creators that return a function instead of an action
+
+This is useful when you want to carry out async operations 
+like axios.post to invoke API first b4 dispatching obj data to store 
+
+I think how it works is redux-thunk wraps the store dispatch and is positioned like 
+so: action function -> redux-thunk middleware -> reducer
+
+whenever dispatch is called, dispatch and getState is passed into 
+the function by redux-thunk. The function then does its 
+operations.
+
+https://medium.com/@Charles_Stover/the-fetch-api-and-asynchronous-redux-state-203270a540d4
+
+

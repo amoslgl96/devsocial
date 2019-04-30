@@ -27,7 +27,7 @@ router.get("/test", (req, res) =>
     msg: "users Works!!"
   })
 );
-
+ 
 // @route GET api/users/REGISTER
 // @desc Register user
 // @access Public (they can't be logged in to register. Hence public.)
