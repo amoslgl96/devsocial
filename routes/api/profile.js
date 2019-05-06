@@ -17,7 +17,7 @@ const validateEducationInput = require("../../validation/education");
 // @access Public
 router.get("/test", (req, res) =>
   res.json({
-    msg: "Profile Works"
+    msg: "Profile Works and the following sentence is added via featuretest/060519 branch from PR."
   })
 );
 
